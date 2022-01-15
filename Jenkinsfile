@@ -45,5 +45,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Remote web server'){
+            steps{
+                script{
+                    sh 'bash ~/ams/start.sh'
+                }
+            }
+        }
     }
 }
