@@ -27,14 +27,14 @@ pipeline {
         // Stopping Docker containers for cleaner Docker run
         stage('stop previous containers') {
              steps {
-                sh 'docker ps -f name=snipeit -q | xargs --no-run-if-empty docker container stop'
-                sh 'docker container ls -a -fname=snipeit -q | xargs -r docker container rm'
+                sh 'docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=ams-docker -q | xargs -r docker container rm'
              }
         }
         stage('Docker Run') {
             steps{
                 script {
-                    sh 'docker run -d -p 8096:80 --rm --name snipeit 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
+                    sh 'docker run -d -p 8096:80 --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
                 }
             }
         }
@@ -49,6 +49,10 @@ pipeline {
         stage('Remote web server'){
             steps{
                 script{
+                    writeFile file:'~/ams/start.sh', text: '''
+                            #!/bin/bash 
+                            echo "Hello this is test remote" 
+                        '''
                     sh 'bash ~/ams/start.sh'
                 }
             }
