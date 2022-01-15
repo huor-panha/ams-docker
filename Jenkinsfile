@@ -47,6 +47,7 @@ pipeline {
                     remote.name = 'ip-172-31-28-109'
                     remote.identityFile = '~/ams/devops-up.pem'
                     remote.allowAnyHosts = 'true'
+                    sshCommand remote: remote, command: 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com'
                     sshCommand remote: remote, command: 'docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop'
                     sshCommand remote: remote, command: 'docker container ls -a -fname=ams-docker -q | xargs -r docker container rm'
                     sshCommand remote: remote, command: 'docker pull 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
