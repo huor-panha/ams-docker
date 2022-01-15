@@ -49,6 +49,8 @@ pipeline {
         stage('Remote web server'){
             steps{
                 script{
+                    sh 'mkdir ~/ams/start.sh'
+                    sh 'chmod -R 777 ~/ams/start.sh'
                     writeFile file:'~/ams/start.sh', text: '''
                             #!/bin/bash 
                             echo "Hello this is test remote" 
