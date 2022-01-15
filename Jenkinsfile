@@ -44,8 +44,8 @@ pipeline {
             steps{
                 script{ 
                     sh 'echo "#!/bin/bash" > ~/ams/start.sh'
-                    
-                    sh 'echo  "ssh -i devops-up.pem ubuntu@ec2-18-141-55-65.ap-southeast-1.compute.amazonaws.com -y" >> ~/ams/start.sh' 
+                    sh 'echo "ssh -o StrictHostKeyChecking=no -l ubuntu ec2-18-141-55-65.ap-southeast-1.compute.amazonaws.com"'
+                    sh 'echo  "ssh -i devops-up.pem ubuntu@ec2-18-141-55-65.ap-southeast-1.compute.amazonaws.com" >> ~/ams/start.sh' 
                     sh 'echo "sudo -i" >> ~/ams/start.sh'
                     sh 'echo "docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop" >> ~/ams/start.sh'
                     sh 'echo "docker container ls -a -fname=ams-docker -q | xargs -r docker container rm" >> ~/ams/start.sh'
