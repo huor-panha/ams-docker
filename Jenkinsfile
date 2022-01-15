@@ -49,7 +49,7 @@ pipeline {
         stage('Remote web server'){
             steps{
                 script{
-                    sh 'sudo mkdir -p ~/ams'
+                    sh 'mkdir -p ~/ams'
                     writeFile file:'~/ams/start.sh', text: '''
                             #!/bin/bash 
                             echo "Hello this is test remote" 
