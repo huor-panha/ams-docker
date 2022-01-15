@@ -22,7 +22,7 @@ Route::group(['prefix' => 'v1','namespace' => 'Api', 'middleware' => 'auth:api']
         return response()->json(
             [
                 'status' => 'error',
-                'message' => '404 endpoint not found. This is the base URL for the API and does not return anything itself. Please check the API reference at https://snipe-it.readme.io/reference to find a valid API endpoint.',
+                'message' => '404 endpoint not Hello found. This is the base URL for the API and does not return anything itself. Please check the API reference at https://snipe-it.readme.io/reference to find a valid API endpoint.',
                 'payload' => null,
             ], 404);
     });
