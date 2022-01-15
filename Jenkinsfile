@@ -34,7 +34,7 @@ pipeline {
         stage('Docker Run') {
             steps{
                 script {
-                    sh 'docker run -d -p 8096:80 --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
+                    sh 'docker run -d -p 80:80 -e APP_KEY="base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=" --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
                 }
             }
         }
