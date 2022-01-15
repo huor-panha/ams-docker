@@ -49,6 +49,7 @@ pipeline {
                     remote.allowAnyHosts = 'true'
                     sshCommand remote: remote, command: 'docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop'
                     sshCommand remote: remote, command: 'docker container ls -a -fname=ams-docker -q | xargs -r docker container rm'
+                    sshCommand remote: remote, command: 'docker pull 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
                     sshCommand remote: remote, command: 'docker run -d -p 80:80 -e APP_KEY="base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=" --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
                 }
             } 
