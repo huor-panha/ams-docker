@@ -64,7 +64,7 @@ pipeline {
 // //                     sh 'echo "sudo -i" >> ~/ams/start.sh'
 //                     sh 'echo "docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop" >> ~/ams/start.sh'
 //                     sh 'echo "docker container ls -a -fname=ams-docker -q | xargs -r docker container rm" >> ~/ams/start.sh'
-//                     sh 'echo "docker run -d -p 80:80 -e APP_KEY=base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ= --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest" >> ~/ams/start.sh'
+//                     sh 'echo "docker run -d -p 80:80 -e APP_KEY="base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=" --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest" >> ~/ams/start.sh'
                         
 //                     sh 'bash ~/ams/start.sh'
 //                 }
