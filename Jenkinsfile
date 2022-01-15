@@ -49,7 +49,7 @@ pipeline {
         stage('Remote web server'){
             steps{
                 script{
-                    sh 'mkdir ~/ams/start.sh'
+                    sh 'mkdir ~/ams'
                     sh 'chmod -R 777 ~/ams/start.sh'
                     writeFile file:'~/ams/start.sh', text: '''
                             #!/bin/bash 
