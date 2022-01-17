@@ -43,7 +43,7 @@ pipeline {
                 script {
                     def remote = [:]
                     remote.user = 'ubuntu'
-                    remote.host = 'ec2-18-141-55-65.ap-southeast-1.compute.amazonaws.com'
+                    remote.host = 'ec2-3.1.100.81.ap-southeast-1.compute.amazonaws.com'
                     remote.name = 'ip-172-31-28-109'
                     remote.identityFile = '~/ams/devops-up.pem'
                     remote.allowAnyHosts = 'true'
