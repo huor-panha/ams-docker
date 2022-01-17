@@ -43,15 +43,15 @@ pipeline {
                 script {
                     def remote = [:]
                     remote.user = 'ubuntu'
-                    remote.host = 'ec2-3-1-100-81.ap-southeast-1.compute.amazonaws.com'
+                    remote.host = 'ec2-13-213-45-58.ap-southeast-1.compute.amazonaws.com'
                     remote.name = 'ip-172-31-28-109'
                     remote.identityFile = '~/ams/devops-up.pem'
                     remote.allowAnyHosts = 'true'
                     sshCommand remote: remote, command: 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com'
                     sshCommand remote: remote, command: 'docker ps -f name=ams-docker -q | xargs --no-run-if-empty docker container stop'
                     sshCommand remote: remote, command: 'docker container ls -a -fname=ams-docker -q | xargs -r docker container rm'
-//                     sshCommand remote: remote, command: 'docker pull 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
-//                     sshCommand remote: remote, command: 'docker run -d -p 80:80 -e APP_KEY="base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=" --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
+                    sshCommand remote: remote, command: 'docker pull 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
+                    sshCommand remote: remote, command: 'docker run -d -p 80:80 -e APP_KEY="base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=" --rm --name ams-docker 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
                 }
             } 
         }
