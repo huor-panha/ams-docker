@@ -72,7 +72,7 @@ pipeline {
         stage('Send Slack Message') {
             steps{
                 script{
-                    slackSend channel: 'devops-final', message: 'Test build from jenkinsfile'
+                    slackSend channel: 'devops-final', message: 'Build number 52'
                 }
             }
         }
