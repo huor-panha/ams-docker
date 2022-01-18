@@ -9,21 +9,21 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/huor-panha/ams-docker.git']]])
             }
         }
-        stage('Docker build') {
-            steps {
-                script {
-                  dockerImage = docker.build registry
-                }
-            }
-        }
-        stage('Docker push') {
-            steps {
-                script {
-                  sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com'
-                  sh 'docker push 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
-                }
-            }
-        }
+//         stage('Docker build') {
+//             steps {
+//                 script {
+//                   dockerImage = docker.build registry
+//                 }
+//             }
+//         }
+//         stage('Docker push') {
+//             steps {
+//                 script {
+//                   sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com'
+//                   sh 'docker push 905140238863.dkr.ecr.ap-southeast-1.amazonaws.com/devops2-test:latest'
+//                 }
+//             }
+//         }
 //         // Stopping Docker containers for cleaner Docker run
 //         stage('Stop previous containers') {
 //              steps {
